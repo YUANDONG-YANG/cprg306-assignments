@@ -1,0 +1,9 @@
+.github-link {
+  text-decoration: underline;   /* underline by default */
+  color: lightblue;             /* default link color */
+  transition: color 0.3s ease;  /* smooth color transition */
+}
+
+.github-link:hover {
+  color: orange;                /* change color on hover */
+}
