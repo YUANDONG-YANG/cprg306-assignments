@@ -36,13 +36,13 @@ export default function NewItem({ onAddItem }) {
     };
 
     return (
-        <div className="mb-8 bg-white p-6 rounded-2xl shadow-lg">
-            <form onSubmit={handleSubmit} className="space-y-6">
-                <h2 className="text-2xl font-bold text-gray-900">Add New Item</h2>
+        <div className="mb-4 bg-white p-4 rounded-lg shadow-lg">
+            <form onSubmit={handleSubmit} className="space-y-4">
+                <h2 className="text-xl font-bold text-gray-900">Add New Item</h2>
 
-                {/* Name - 修复：添加深色文字 */}
-                <div className="space-y-2">
-                    <label htmlFor="name" className="block text-sm font-semibold text-gray-900">
+                {/* Item Name */}
+                <div>
+                    <label htmlFor="name" className="block text-sm font-semibold text-gray-800 mb-1">
                         Item Name <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -51,30 +51,31 @@ export default function NewItem({ onAddItem }) {
                         required
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        placeholder="e.g., Apples"
-                        className="w-full rounded-xl border px-4 py-2 text-gray-900 outline-none focus:ring-2 focus:ring-amber-400"
+                        placeholder="e.g., milk, 4 L 🥛"
+                        className="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 outline-none focus:ring-2 focus:ring-amber-400"
                     />
                 </div>
 
-                {/* Quantity - 修复：添加深色文字 */}
-                <div className="space-y-2">
-                    <label className="block text-sm font-semibold text-gray-900">Quantity (1-20)</label>
-                    <div className="flex items-center">
+                {/* Quantity */}
+                <div>
+                    <label className="block text-sm font-semibold text-gray-800 mb-1">
+                        Quantity (1-20)
+                    </label>
+                    <div className="flex items-center gap-3">
                         <button
                             type="button"
                             onClick={decrement}
                             disabled={quantity <= 1}
-                            className={`rounded-xl px-4 py-2 font-bold mr-3 ${
+                            className={`w-10 h-10 rounded-lg font-bold ${
                                 quantity <= 1
-                                    ? "bg-gray-200 text-gray-400 cursor-not-allowed opacity-60"
-                                    : "bg-red-100 text-red-700 hover:bg-red-200"
+                                    ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                                    : "bg-red-500 text-white hover:bg-red-600"
                             }`}
                         >
                             -
                         </button>
 
-                        {/* 修复：数量显示为深色 */}
-                        <span className="min-w-16 text-center font-semibold text-gray-900">
+                        <span className="min-w-12 text-center font-bold text-xl text-gray-900">
                             {quantity}
                         </span>
 
@@ -82,29 +83,28 @@ export default function NewItem({ onAddItem }) {
                             type="button"
                             onClick={increment}
                             disabled={quantity >= 20}
-                            className={`rounded-xl px-4 py-2 font-bold ml-3 ${
+                            className={`w-10 h-10 rounded-lg font-bold ${
                                 quantity >= 20
-                                    ? "bg-gray-200 text-gray-400 cursor-not-allowed opacity-60"
-                                    : "bg-green-100 text-green-700 hover:bg-green-200"
+                                    ? "bg-gray-200 text-gray-400 cursor-not-allowed"
+                                    : "bg-green-500 text-white hover:bg-green-600"
                             }`}
                         >
                             +
                         </button>
                     </div>
-                    {/* 修复：提示文字为深色 */}
-                    <p className="text-xs text-gray-700">Current: {quantity}</p>
+                    <p className="text-xs text-gray-600 mt-1">Current: {quantity}</p>
                 </div>
 
-                {/* Category - 修复：添加深色文字 */}
-                <div className="space-y-2">
-                    <label htmlFor="category" className="block text-sm font-semibold text-gray-900">
+                {/* Category */}
+                <div>
+                    <label htmlFor="category" className="block text-sm font-semibold text-gray-800 mb-1">
                         Category
                     </label>
                     <select
                         id="category"
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
-                        className="w-full rounded-xl border px-4 py-2 text-gray-900 outline-none focus:ring-2 focus:ring-amber-400"
+                        className="w-full rounded-lg border border-gray-300 px-3 py-2 text-gray-900 outline-none focus:ring-2 focus:ring-amber-400 bg-white"
                     >
                         <option value="produce">Produce</option>
                         <option value="dairy">Dairy</option>
@@ -121,14 +121,12 @@ export default function NewItem({ onAddItem }) {
                 </div>
 
                 {/* Submit Button */}
-                <div className="pt-2">
-                    <button
-                        type="submit"
-                        className="w-full rounded-xl bg-amber-400 hover:bg-amber-500 active:bg-amber-600 text-white font-bold px-6 py-3 transition"
-                    >
-                        Add Item
-                    </button>
-                </div>
+                <button
+                    type="submit"
+                    className="w-full rounded-lg bg-amber-500 hover:bg-amber-600 text-white font-bold px-4 py-2.5 transition"
+                >
+                    Add Item
+                </button>
             </form>
         </div>
     );
