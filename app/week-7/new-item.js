@@ -19,30 +19,17 @@ export default function NewItem({ onAddItem }) {
         }
     };
 
-    // Handle form submission
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        // Generate a random ID
         const id = Math.random().toString(36).substring(2, 9);
-
-        // Create the item object
         const item = {
             id: id,
             name: name,
             quantity: quantity,
             category: category
         };
-
-        // Call the parent's handler
         onAddItem(item);
-
-        // Display confirmation alert
-        alert(
-            `Item submitted:\n- Name: ${name}\n- Quantity: ${quantity}\n- Category: ${category}`
-        );
-
-        // Reset form fields
+        alert(`Item submitted:\n- Name: ${name}\n- Quantity: ${quantity}\n- Category: ${category}`);
         setName("");
         setQuantity(1);
         setCategory("produce");
@@ -51,12 +38,12 @@ export default function NewItem({ onAddItem }) {
     return (
         <div className="mb-8 bg-white p-6 rounded-2xl shadow-lg">
             <form onSubmit={handleSubmit} className="space-y-6">
-                <h2 className="text-2xl font-bold text-amber-900">Add New Item</h2>
+                <h2 className="text-2xl font-bold text-gray-900">Add New Item</h2>
 
-                {/* Name */}
+                {/* Name - 修复：添加深色文字 */}
                 <div className="space-y-2">
-                    <label htmlFor="name" className="block text-sm font-semibold">
-                        Name <span className="text-red-500">*</span>
+                    <label htmlFor="name" className="block text-sm font-semibold text-gray-900">
+                        Item Name <span className="text-red-500">*</span>
                     </label>
                     <input
                         id="name"
@@ -65,13 +52,13 @@ export default function NewItem({ onAddItem }) {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         placeholder="e.g., Apples"
-                        className="w-full rounded-xl border px-4 py-2 outline-none focus:ring-2 focus:ring-amber-400"
+                        className="w-full rounded-xl border px-4 py-2 text-gray-900 outline-none focus:ring-2 focus:ring-amber-400"
                     />
                 </div>
 
-                {/* Quantity */}
+                {/* Quantity - 修复：添加深色文字 */}
                 <div className="space-y-2">
-                    <label className="block text-sm font-semibold">Quantity</label>
+                    <label className="block text-sm font-semibold text-gray-900">Quantity (1-20)</label>
                     <div className="flex items-center">
                         <button
                             type="button"
@@ -86,7 +73,8 @@ export default function NewItem({ onAddItem }) {
                             -
                         </button>
 
-                        <span className="min-w-16 text-center font-semibold">
+                        {/* 修复：数量显示为深色 */}
+                        <span className="min-w-16 text-center font-semibold text-gray-900">
                             {quantity}
                         </span>
 
@@ -103,19 +91,20 @@ export default function NewItem({ onAddItem }) {
                             +
                         </button>
                     </div>
-                    <p className="text-xs text-gray-500">Range: 1–20</p>
+                    {/* 修复：提示文字为深色 */}
+                    <p className="text-xs text-gray-700">Current: {quantity}</p>
                 </div>
 
-                {/* Category */}
+                {/* Category - 修复：添加深色文字 */}
                 <div className="space-y-2">
-                    <label htmlFor="category" className="block text-sm font-semibold">
+                    <label htmlFor="category" className="block text-sm font-semibold text-gray-900">
                         Category
                     </label>
                     <select
                         id="category"
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
-                        className="w-full rounded-xl border px-4 py-2 outline-none focus:ring-2 focus:ring-amber-400"
+                        className="w-full rounded-xl border px-4 py-2 text-gray-900 outline-none focus:ring-2 focus:ring-amber-400"
                     >
                         <option value="produce">Produce</option>
                         <option value="dairy">Dairy</option>
