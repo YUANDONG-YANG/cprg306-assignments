@@ -41,7 +41,7 @@ export default function NewItem({ onAddItem }) {
 
     return (
         <form
-            className="mx-auto my-4 gap-3 flex flex-col justify-content text-black bg-white w-100 p-4"
+            className="mx-auto my-4 gap-3 flex flex-col justify-content text-black bg-black w-100 p-4"
             onSubmit={handleSubmit}
         >
             {/* Item name input field */}
