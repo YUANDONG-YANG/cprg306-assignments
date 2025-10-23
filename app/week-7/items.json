@@ -39,13 +39,13 @@
     "id": "7gkHG31h1H2KJH3k",
     "name": "pasta sauce 🍝",
     "quantity": 3,
-    "category": "canned goods"
+    "category": "canned_goods"
   },
   {
     "id": "8j3H1k2J3K1H2GJK",
     "name": "spaghetti, 454 g 🍝",
     "quantity": 2,
-    "category": "dry goods"
+    "category": "dry_goods"
   },
   {
     "id": "9H12gkHG31h1H2KJ",
@@ -55,13 +55,13 @@
   },
   {
     "id": "10H3k2j3H1k2J3K1",
-    "name": "paper towels, 6 pack 🧻",
+    "name": "paper towels, 6 pack",
     "quantity": 1,
     "category": "household"
   },
   {
     "id": "11k2J3K1H2GJKH12",
-    "name": "dish soap 🍽️",
+    "name": "dish soap 🧽",
     "quantity": 1,
     "category": "household"
   },

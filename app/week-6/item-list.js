@@ -1,68 +1,127 @@
-"use client";
+'use client';
 
-import Item from "./item.js";
-import itemsData from "./items.json";
-import { useState } from "react";
+import Item from '../week-3/item';
+import { useState } from 'react';
+
+const items = [
+    {
+        id: '1h2GJKH12gkHG31h1H',
+        name: 'milk, 4 L 🥛',
+        quantity: 1,
+        category: 'dairy',
+    },
+    {
+        id: '2KJH3k2j3H1k2J3K1H',
+        name: 'bread 🍞',
+        quantity: 2,
+        category: 'bakery',
+    },
+    {
+        id: '3h2KJH3k2j3H1k2J3',
+        name: 'eggs, dozen 🥚',
+        quantity: 2,
+        category: 'dairy',
+    },
+    {
+        id: '4k2J3K1H2GJKH12gk',
+        name: 'bananas 🍌',
+        quantity: 6,
+        category: 'produce',
+    },
+    {
+        id: '5H1h1H2KJH3k2j3H',
+        name: 'broccoli 🥦',
+        quantity: 3,
+        category: 'produce',
+    },
+    {
+        id: '6H1k2J3K1H2GJKH1',
+        name: 'chicken breasts, 1 kg 🍗',
+        quantity: 1,
+        category: 'meat',
+    },
+    {
+        id: '7gkHG31h1H2KJH3k',
+        name: 'pasta sauce 🍝',
+        quantity: 3,
+        category: 'canned goods',
+    },
+    {
+        id: '8j3H1k2J3K1H2GJK',
+        name: 'spaghetti, 454 g 🍝',
+        quantity: 2,
+        category: 'dry goods',
+    },
+    {
+        id: '9H12gkHG31h1H2KJ',
+        name: 'toilet paper, 12 pack 🧻',
+        quantity: 1,
+        category: 'household',
+    },
+    {
+        id: '10H3k2j3H1k2J3K1',
+        name: 'paper towels, 6 pack',
+        quantity: 1,
+        category: 'household',
+    },
+    {
+        id: '11k2J3K1H2GJKH12',
+        name: 'dish soap 🍽️',
+        quantity: 1,
+        category: 'household',
+    },
+    {
+        id: '12GJKH12gkHG31h1',
+        name: 'hand soap 🧼',
+        quantity: 4,
+        category: 'household',
+    },
+];
+
+const STRATEGY_BY_NAME = 'name';
+const STRATEGY_BY_CATEGORY = 'category';
+const STRATEGY_GROUP_BY_CATEGORY = 'groupByCategory';
 
 export default function ItemList() {
-    const [sortBy, setSortBy] = useState("name");
-
-    // Copy and sort items
-    let itemsCopy = [...itemsData];
-    itemsCopy.sort((a, b) => {
-        const aName = a.name.trim().toLowerCase();
-        const bName = b.name.trim().toLowerCase();
-
-        if (sortBy === "name") {
-            return aName.localeCompare(bName);
-        }
-
-        // Sort by category, with name as secondary sort
-        const aCat = a.category.trim().toLowerCase();
-        const bCat = b.category.trim().toLowerCase();
-        const byCat = aCat.localeCompare(bCat);
-        return byCat !== 0 ? byCat : aName.localeCompare(bName);
-    });
+    const [sortBy, setSortBy] = useState(STRATEGY_BY_NAME);
+    if (sortBy === STRATEGY_BY_NAME) {
+        items.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortBy === STRATEGY_BY_CATEGORY) {
+        items.sort((a, b) => a.category.localeCompare(b.category));
+    }
 
     return (
         <div>
-            {/* Sorting buttons */}
-            <div className="mb-4 flex gap-2">
+            <div className="flex gap-2 mb-4">
                 <button
-                    type="button"
-                    onClick={() => setSortBy("name")}
-                    className={`px-4 py-2 rounded font-semibold ${
-                        sortBy === "name"
-                            ? "bg-amber-500 text-white"
-                            : "bg-amber-200 text-gray-800 hover:bg-amber-300"
-                    }`}
+                    onClick={() => setSortBy(STRATEGY_BY_NAME)}
+                    className={`p-2 my-4 rounded font-bold ${sortBy === STRATEGY_BY_NAME ? 'bg-yellow-500' : 'bg-gray-400'}`}
                 >
                     Sort by Name
                 </button>
                 <button
-                    type="button"
-                    onClick={() => setSortBy("category")}
-                    className={`px-4 py-2 rounded font-semibold ${
-                        sortBy === "category"
-                            ? "bg-amber-500 text-white"
-                            : "bg-amber-200 text-gray-800 hover:bg-amber-300"
-                    }`}
+                    onClick={() => setSortBy(STRATEGY_BY_CATEGORY)}
+                    className={`p-2 my-4 rounded font-bold ${sortBy === STRATEGY_BY_CATEGORY ? 'bg-yellow-500' : 'bg-gray-400'}`}
                 >
                     Sort by Category
                 </button>
+                {/* <button
+                    onClick={() => setSortBy(STRATEGY_GROUP_BY_CATEGORY)}
+                    className={`p-2 my-4 rounded font-bold ${sortBy === STRATEGY_GROUP_BY_CATEGORY ? 'bg-yellow-500' : 'bg-gray-400'}`}
+                >
+                    Group by Category
+                </button> */}
             </div>
-
-            {/* Render items list */}
-            <ul className="space-y-2">
-                {itemsCopy.map((item) => (
+            <div className="space-y-2">
+                {items.map(item => (
                     <Item
                         key={item.id}
-                        name={item.name.trim()}
+                        name={item.name}
                         quantity={item.quantity}
                         category={item.category}
                     />
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }

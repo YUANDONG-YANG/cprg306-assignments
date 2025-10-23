@@ -1,68 +1,57 @@
 "use client";
 
-import Item from "./item.js";
+import Item from "./item";
 import { useState } from "react";
 
-// ItemList component that displays a list of shopping items
+const STRATEGY_BY_NAME = "name";
+const STRATEGY_BY_CATEGORY = "category";
+
 export default function ItemList({ items }) {
-    const [sortBy, setSortBy] = useState("name");
+    const [sortBy, setSortBy] = useState(STRATEGY_BY_NAME);
 
-    // Copy and sort items
-    let itemsCopy = [...items];
-    itemsCopy.sort((a, b) => {
-        const aName = a.name.trim().toLowerCase();
-        const bName = b.name.trim().toLowerCase();
+    // Create a copy of items to avoid mutating the prop (React immutability principle)
+    let sortedItems = [...items];
 
-        if (sortBy === "name") {
-            return aName.localeCompare(bName);
-        }
-
-        // Sort by category, with name as secondary sort
-        const aCat = a.category.trim().toLowerCase();
-        const bCat = b.category.trim().toLowerCase();
-        const byCat = aCat.localeCompare(bCat);
-        return byCat !== 0 ? byCat : aName.localeCompare(bName);
-    });
+    // Sort items based on selected strategy
+    if (sortBy === STRATEGY_BY_NAME) {
+        sortedItems.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortBy === STRATEGY_BY_CATEGORY) {
+        sortedItems.sort((a, b) => a.category.localeCompare(b.category));
+    }
 
     return (
         <div>
             {/* Sorting buttons */}
-            <div className="mb-4 flex gap-2 font-bold">
+            <div className="flex gap-2 mb-4">
                 <button
-                    type="button"
-                    onClick={() => setSortBy("name")}
-                    className={
-                        sortBy === "name"
-                            ? "px-3 py-1.5 rounded bg-yellow-600 text-black"
-                            : "px-3 py-1.5 rounded bg-yellow-200 text-gray-800"
-                    }
+                    onClick={() => setSortBy(STRATEGY_BY_NAME)}
+                    className={`p-2 my-4 rounded font-bold ${
+                        sortBy === STRATEGY_BY_NAME ? "bg-yellow-500" : "bg-gray-400"
+                    }`}
                 >
                     Sort by Name
                 </button>
                 <button
-                    type="button"
-                    onClick={() => setSortBy("category")}
-                    className={
-                        sortBy === "category"
-                            ? "px-3 py-1.5 rounded bg-yellow-600 text-black"
-                            : "px-3 py-1.5 rounded bg-yellow-200 text-gray-800"
-                    }
+                    onClick={() => setSortBy(STRATEGY_BY_CATEGORY)}
+                    className={`p-2 my-4 rounded font-bold ${
+                        sortBy === STRATEGY_BY_CATEGORY ? "bg-yellow-500" : "bg-gray-400"
+                    }`}
                 >
                     Sort by Category
                 </button>
             </div>
 
-            {/* Render items list */}
-            <ul className="space-y-2">
-                {itemsCopy.map((item) => (
+            {/* Items list */}
+            <div className="space-y-2">
+                {sortedItems.map((item) => (
                     <Item
                         key={item.id}
-                        name={item.name.trim()}
+                        name={item.name}
                         quantity={item.quantity}
                         category={item.category}
                     />
                 ))}
-            </ul>
+            </div>
         </div>
     );
 }

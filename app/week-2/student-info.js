@@ -1,19 +1,16 @@
 import Link from "next/link";
-import "./student-info.css"; // import custom styles
 
-export default function StudentInfo() {
-  return (
-    <div>
-      <p>Auth: Yang Yuandong</p>
-      <p>
-        GitHub:{" "}
-        <Link
-          href="https://github.com/YUANDONG-YANG/cprg306-assignments"
-          className="github-link"
-        >
-          cprg306-assignments
-        </Link>
-      </p>
-    </div>
-  );
+export function StudentInfo() {
+    return (
+        <div>
+            <label className="mr-2.5">Guanmeng Du</label>
+            <Link
+                className="underline text-blue-500"
+                target="_blank"
+                href="https://github.com/derek-du-forever/cprg306-assignments.git"
+            >
+                Goto My Github
+            </Link>
+        </div>
+    );
 }

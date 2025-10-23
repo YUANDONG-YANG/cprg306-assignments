@@ -1,9 +1,9 @@
-import NewItem from "./new-item.js";
+import NewItem from '@/app/week-4/new-item';
 
-export default function Week4() {
+export default function Page() {
     return (
-    <main>
-        <NewItem />
-    </main>
-        );
+        <main>
+            <NewItem />
+        </main>
+    );
 }

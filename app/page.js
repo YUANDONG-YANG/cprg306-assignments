@@ -1,65 +1,40 @@
-import Link from "next/link";
-import "./home.css"; // import custom styles
+import Link from 'next/link';
 
 export default function Home() {
-<<<<<<< HEAD
-  return (
-    <main>
-      <h1>CPRG 306: Web Development 2 - Assignments</h1>
-      <p>
-        {/* Add a clear instruction for the user */}
-        Click here to open:{" "}
-        <Link href="/week-2" className="week2-link">
-          Week 2 Assignment
-        </Link>
-      </p>
-      <p>Author: Yang Yuandong</p>
-    </main>
-  );
-=======
     return (
-        <main className="min-h-screen flex flex-col items-center justify-center p-8 space-y-4">
-            <h1 className="bg-amber-100 text-4xl font-bold mb-4 p-4 rounded">
-                CPRG 306: Web Development 2 - Assignments
-            </h1>
+        <main className="p-2">
+            <h1>CPRG 306: Web Development 2 - Assignments</h1>
 
-            <Link
-                href="/week-2"
-                className="bg-green-100  text-green-600 hover:underline text-lg font-bold"
-            >
-                <p>Go to Week-2 page</p>
-            </Link>
-            <Link
-                href="/week-3"
-                className="bg-green-100  text-green-600 hover:underline text-lg font-bold"
-            >
-                <p>Go to Week-3 page</p>
-            </Link>
-            <Link
-                href="/week-4"
-                className="bg-green-100  text-green-600 hover:underline text-lg font-bold"
-            >
-                <p>Go to Week-4 page</p>
-            </Link>
-            <Link
-                href="/week-5"
-                className="bg-green-100  text-green-600 hover:underline text-lg font-bold"
-            >
-                <p>Go to Week-5 page</p>
-            </Link>
-            <Link
-                href="/week-6"
-                className="bg-green-100  text-green-600 hover:underline text-lg font-bold"
-            >
-                <p>Go to Week-6 page</p>
-            </Link>
-            <Link
-                href="/week-7"
-                className="bg-green-100  text-green-600 hover:underline text-lg font-bold"
-            >
-                <p>Go to Week-6 page</p>
-            </Link>
+            <div>
+                <Link className="underline text-blue-500" href="/week-2">
+                    Week 2 Assignment
+                </Link>
+            </div>
+            <div>
+                <Link className="underline text-blue-500" href="/week-3">
+                    Week 3 Assignment
+                </Link>
+            </div>
+            <div>
+                <Link className="underline text-blue-500" href="/week-4">
+                    Week 4 Assignment
+                </Link>
+            </div>
+            <div>
+                <Link className="underline text-blue-500" href="/week-5">
+                    Week 5 Assignment
+                </Link>
+            </div>
+            <div>
+                <Link className="underline text-blue-500" href="/week-6">
+                    Week 6 Assignment
+                </Link>
+            </div>
+            <div>
+                <Link className="underline text-blue-500" href="/week-6">
+                    Week 7 Assignment
+                </Link>
+            </div>
         </main>
     );
->>>>>>> 8c65a64 (Add Week 7 assignment - Shopping List App with state management)
 }
