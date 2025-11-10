@@ -14,9 +14,9 @@ export default function Page() {
             <p>Some Content</p>
             <p>
                 {user ? (
-                    <button onClick={firebaseSignout}>Sign Out</button>
+                    <button onClick={firebaseSignOut}>Sign Out</button>
                 ) : (
-                    <button onClick={githubSignIn}>Sign In with Github</button>
+                    <button onClick={gitHubSignIn}>Sign In with Github</button>
                 )}
             </p>
 
