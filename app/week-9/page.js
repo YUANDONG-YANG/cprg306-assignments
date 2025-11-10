@@ -3,7 +3,7 @@
 import {useUserAuth} from "./_utils/auth-context";
 
 export default function Page() {
-    const {user, githubSignIn, firebaseSignout} = useUserAuth();
+    const {user, gitHubSignIn, firebaseSignOut} = useUserAuth();
     console.log(user);
 
     return (

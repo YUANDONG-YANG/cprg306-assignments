@@ -3,6 +3,10 @@ import { initializeApp } from "firebase/app";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getAuth } from "firebase/auth";
+console.log("🔍 env param：");
+console.log("API Key:", process.env.NEXT_PUBLIC_FIREBASE_API_KEY);
+console.log("API Key length:", process.env.NEXT_PUBLIC_FIREBASE_API_KEY?.length);
+console.log("API Key has quotes?", process.env.NEXT_PUBLIC_FIREBASE_API_KEY?.includes('"'));
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -13,6 +17,10 @@ const firebaseConfig = {
   messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 };
+
+console.log("🔥 Firebase Config:", firebaseConfig);
 // Initialize Firebase
+// const app = getApps().length ? getApp() : initializeApp(firebaseConfig);
+// export const auth = getAuth(app);
 const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
